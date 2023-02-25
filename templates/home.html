@@ -1,77 +1,88 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <title>Home</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
       body {
-        background-color: #2c3e50;
-        color: #fff;
-        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
       }
+      
       header {
-        background-color: #1abc9c;
-        padding: 20px;
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 30px;
-      }
-      .container {
-        height: 100vh;
+        height: 80px;
+        background-color: #333;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: space-between;
+        padding: 0 50px;
       }
+      
+      h1 {
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0;
+      }
+      
+      .fullscreen {
+        height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
       .box {
-        background-color: #34495e;
-        padding: 20px;
-        border-radius: 10px;
-        width: 50%;
+        width: 80%;
         max-width: 600px;
+        height: 150px;
+        background-color: #444;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
       }
-      .box input[type="text"] {
-        background-color: #2c3e50;
-        color: #fff;
+      
+      .input {
+        width: 90%;
+        max-width: 500px;
+        height: 50px;
         padding: 10px;
+        background-color: #eee;
         border: none;
-        border-radius: 5px;
-        width: 100%;
+        border-radius: 25px;
         font-size: 18px;
-        margin-bottom: 10px;
+        outline: none;
       }
-
-	  #voice-btn {
-		position: absolute;
-		bottom: 100px;
-		left: 650px;
-		background-color: #4CAF50;
-		color: white;
-		border: none;
-		border-radius: 50%;
-		font-size: 2rem;
-		width: 60px;
-		height: 60px;
-		outline: none;
-	  }
-	  
-	  #voice-btn:hover {
-		cursor: pointer;
-	  }
+      
+      .btn-voice {
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+        border: none;
+        background-color: #00a8ff;
+        color: white;
+        font-size: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      
+      .btn-voice:hover {
+        background-color: #0097e6;
+      }
     </style>
   </head>
   <body>
-    <header>VoiceCFV</header>
-    <div class="container">
+    <header>
+      <h1>My Website</h1>
+      <a href="{{ url_for('login') }}">Logout</a>
+    </header>
+    <div class="fullscreen">
       <div class="box">
-        <input type="text" placeholder="Digite aqui...">
-		<button id="voice-btn"><i class="fas fa-microphone"></i></button>
+        <input type="text" class="input" placeholder="Type something...">
+        <button class="btn-voice"><i class="fas fa-microphone"></i></button>
       </div>
     </div>
   </body>
