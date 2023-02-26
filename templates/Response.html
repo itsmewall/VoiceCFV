@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+      .user-message {
+        margin: 10px;
+        padding: 10px;
+        background-color: #eee;
+        border-radius: 10px;
+        max-width: 60%;
+        align-self: flex-start;
+      }
+
+      
+      .ai-response {
+        margin: 10px;
+        padding: 10px;
+        background-color: #444;
+        color: #fff;
+        border-radius: 10px;
+        max-width: 60%;
+        align-self: flex-end;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Website</h1>
+      <a href="{{ url_for('login') }}">Logout</a>
+    </header>
+    <div class="fullscreen">
+      <div class="conversation">
+        <!-- Mensagens do usuário e respostas da OpenAI -->
+      </div>
+      <div class="box">
+        <input type="text" class="input" id="texto" placeholder="Type something...">
+        <button id="voice-btn" onclick="startDictation()" class="fas fa-microphone">Clique para falar</button>
+      </div>
+    </div>
+    <script>
+      // criar um novo elemento para a mensagem do usuário
+      var userMessage = document.createElement("div");
+      userMessage.classList.add("user-message");
+      // adicionar o texto da mensagem do usuário ao elemento
+      var messageText = document.createTextNode(final_transcript);
+      userMessage.appendChild(messageText);
+      // adicionar o elemento à conversa
+      var conversation = document.querySelector(".conversation");
+      conversation.appendChild(userMessage);
+  
+  
+  
+      // criar um novo elemento para a resposta da OpenAI
+      var aiResponse = document.createElement("div");
+      aiResponse.classList.add("ai-response");
+      // adicionar o texto da resposta da OpenAI ao elemento
+      var responseText = document.createTextNode(response);
+      aiResponse.appendChild(responseText);
+      // adicionar o elemento à conversa
+      var conversation = document.querySelector(".conversation");
+      conversation.appendChild(aiResponse);
+    </script>
+  
+  </body>
+</html>

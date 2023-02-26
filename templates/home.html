@@ -3,76 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <style>
-      body {
-        background-color: #111;
-        color: white;
-      }
-      
-      header {
-        height: 80px;
-        background-color: #333;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 50px;
-      }
-      
-      h1 {
-        font-size: 28px;
-        font-weight: bold;
-        margin: 0;
-      }
-      
-      .fullscreen {
-        height: calc(100vh - 80px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .box {
-        width: 80%;
-        max-width: 600px;
-        height: 150px;
-        background-color: #444;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-      }
-      
-      .input {
-        width: 90%;
-        max-width: 500px;
-        height: 50px;
-        padding: 10px;
-        background-color: #eee;
-        border: none;
-        border-radius: 25px;
-        font-size: 18px;
-        outline: none;
-      }
-      
-      .btn-voice {
-        width: 50px;
-        height: 50px;
-        margin-left: 10px;
-        border: none;
-        background-color: #00a8ff;
-        color: white;
-        font-size: 24px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-      
-      .btn-voice:hover {
-        background-color: #0097e6;
-      }
-    </style>
+    <link rel="stylesheet" href="/static/css/style.css">
   </head>
   <body>
     <header>
@@ -80,12 +11,14 @@
       <a href="{{ url_for('login') }}">Logout</a>
     </header>
     <div class="fullscreen">
+      <div class="conversation"></div>
       <div class="box">
         <input type="text" class="input" id="texto" placeholder="Type something...">
         <button id="voice-btn" onclick="startDictation()" class="fas fa-microphone">Clique para falar</button>
       </div>
     </div>
 
+    <script src="{{ url_for('static', filename='js/Response.js') }}"></script>
     <script src="{{ url_for('static', filename='js/Speech.js') }}"></script>
   </body>
 </html>
