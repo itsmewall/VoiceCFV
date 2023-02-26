@@ -81,9 +81,11 @@
     </header>
     <div class="fullscreen">
       <div class="box">
-        <input type="text" class="input" placeholder="Type something...">
-        <button class="btn-voice"><i class="fas fa-microphone"></i></button>
+        <input type="text" class="input" id="texto" placeholder="Type something...">
+        <button id="voice-btn" onclick="startDictation()" class="fas fa-microphone">Clique para falar</button>
       </div>
     </div>
+
+    <script src="{{ url_for('static', filename='js/Speech.js') }}"></script>
   </body>
 </html>
