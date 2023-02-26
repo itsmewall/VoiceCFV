@@ -5,8 +5,8 @@ import openai
 import requests
 
 app = Flask(__name__, static_folder='static')
-app.config['SECRET_KEY'] = 'SECRET'
-openai.api_key = "PRIVATE"
+app.config['SECRET_KEY'] = 'mysecretkey'
+openai.api_key = "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"
 
 # Definindo um dicionário vazio para armazenar os usuários cadastrados
 users = {}
