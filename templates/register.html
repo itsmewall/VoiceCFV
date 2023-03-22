@@ -8,57 +8,105 @@
             background-color: #2B2D42;
             color: #FFF;
             font-family: Arial, Helvetica, sans-serif;
-        }
-        h1 {
+          }
+          
+          h1 {
             text-align: center;
-        }
-        form {
+          }
+          
+          form {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             margin-top: 50px;
-        }
-        label {
+            width: 50%;
+            margin: 0 auto;
+          }
+          
+          label {
             font-size: 20px;
             margin-bottom: 10px;
-        }
-        input {
+          }
+          
+          input {
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 5px;
             border: none;
-        }
-        input[type=submit] {
+          }
+          
+          input[type=submit] {
             background-color: #4CAF50;
             color: #FFF;
             cursor: pointer;
-        }
-        input[type=submit]:hover {
+            width: 100%;
+            font-size: 20px;
+          }
+          
+          input[type=submit]:hover {
             background-color: #3e8e41;
-        }
-        .error {
+          }
+          
+          .error {
             color: red;
             margin-top: 10px;
-        }
+          }  form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+          }
+          
+          label {
+            font-size: 20px;
+            margin-bottom: 10px;
+          }
+          
+          input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+          }
+          
+          input[type=submit] {
+            background-color: #4CAF50;
+            color: #FFF;
+            cursor: pointer;
+          }
+          
+          input[type=submit]:hover {
+            background-color: #3e8e41;
+          }
+          
+          .error {
+            color: red;
+            margin-top: 10px;
+          }
+          
+          .fullscreen {
+            height: auto;
+          }
     </style>
 </head>
-<body>
-    <h1>Cadastro</h1>
-    {% if error %}
-        <p class="error">{{ error }}</p>
-    {% endif %}
-    <form method="POST">
-        <label for="username">Nome de usuário:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
-
-        <label for="confirm_password">Confirmar senha:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required>
-
-        <input type="submit" value="Cadastrar">
-    </form>
-</body>
+    <body class="fullscreen">
+        <h1>Cadastro</h1>
+        {% if error %}
+          <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+          <label for="username">Nome de usuário:</label>
+          <input type="text" id="username" name="username" required>
+      
+          <label for="password">Senha:</label>
+          <input type="password" id="password" name="password" required>
+      
+          <label for="confirm_password">Confirmar senha:</label>
+          <input type="password" id="confirm_password" name="confirm_password" required>
+      
+          <input type="submit" value="Cadastrar">
+        </form>
+      </body>
 </html>

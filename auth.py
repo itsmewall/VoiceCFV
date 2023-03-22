@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-import json
+import socketio
 import speech_recognition as sr
 import openai
 import requests
@@ -10,6 +10,9 @@ openai.api_key = "PRIVATE"
 
 # Definindo um dicionário vazio para armazenar os usuários cadastrados
 users = {}
+
+# Cria o histórico de mensagens
+messages = []
 
 # Rota para a página de login
 @app.route('/', methods=['GET', 'POST'])
@@ -24,7 +27,8 @@ def login():
             error = 'Senha incorreta'
         else:
             # Se as credenciais estiverem corretas, redireciona para a página home
-            return redirect(url_for('home'))
+            return redirect(url_for('home', username=username))
+    
     return render_template('login.html', error=error)
 
 # Rota para a página de cadastro
@@ -47,7 +51,6 @@ def register():
     return render_template('register.html', error=error)
 
 # SPEECH
-    
 @app.route('/transcription', methods=['POST'])
 def transcription():
     r = sr.Recognizer()
@@ -68,45 +71,42 @@ def transcription():
     except:
         return jsonify({'success': False}), 500
 
-# OPENAI
-@app.route('/transcription', methods=['POST'])
+@app.route("/send_message", methods=["POST"])
+def send_message():
+    # Recebe a mensagem do cliente
+    message = request.json["message"]
+    
+    # Adiciona a mensagem ao histórico de mensagens
+    messages.append(message)
+    
+    # Envia a mensagem para todos os clientes conectados
+    socketio.emit("message", message)
+    
+    return "OK"
 
-def get_openai_response(transcription):
+
+# OPENAI
+def get_openai_response(prompt):
     url = "https://api.openai.com/v1/engines/davinci-codex/completions"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {openai.api_key}"
     }
     data = {
-        "prompt": f"Transcription: {transcription}",
+        "prompt": prompt,
         "max_tokens": 60,
         "temperature": 0.7
     }
     response = requests.post(url, headers=headers, json=data)
     return response.json()["choices"][0]["text"]
 
-def transcription():
-    r = sr.Recognizer()
-    data = request.get_json()
-    text = data['text']
-    try:
-        with open("transcription.txt", "a") as f:
-            f.write(text + "\n")
-        with open("transcription.txt", "r") as f:
-            contents = f.read()
-            print(contents)
-            
-        # Get response from OpenAI
-        response = get_openai_response(text)
-        return jsonify({'success': True, 'response': response}), 200
-    except:
-        return jsonify({'success': False}), 500
-
 
 # Rota para a página home
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    username = request.args.get('username')
+    return render_template('home.html', username=username)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

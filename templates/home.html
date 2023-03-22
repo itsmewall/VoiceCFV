@@ -3,22 +3,105 @@
   <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>console.log('jQuery version:', $().jquery);</script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webkitSpeechRecognition/0.5.0/webkitSpeechRecognition.js"></script>
+
+    <style>
+      body {
+        background-color: #E5E5E5;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: #2B2D42;
+        color: #FFF;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+      
+      header h1 {
+        font-size: 32px;
+        margin: 0;
+      }
+      header a {
+        color: #FFF;
+        text-decoration: none;
+        font-size: 20px;
+      }
+      header a:hover {
+        text-decoration: underline;
+      }
+      .fullscreen {
+        height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .conversation {
+        background-color: #FFF;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        height: 400px;
+        margin-bottom: 20px;
+        padding: 20px;
+        overflow-y: scroll;
+      }
+      .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .input {
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: none;
+        font-size: 20px;
+        flex-grow: 1;
+      }
+      .fas.fa-microphone {
+        font-size: 24px;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #FFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .fas.fa-microphone:hover {
+        background-color: #3e8e41;
+      }
+      .chat-container {
+        width: 100%;
+        height: 500px;
+        background-color: #f2f2f2;
+      }
+    </style>
   </head>
   <body>
     <header>
-      <h1>My Website</h1>
+      <h1>VoiceCFV BOT</h1>
       <a href="{{ url_for('login') }}">Logout</a>
+      <p>Olá, {{username}}!</p>
     </header>
     <div class="fullscreen">
-      <div class="conversation"></div>
+      <div id="chat-container"></div>
       <div class="box">
         <input type="text" class="input" id="texto" placeholder="Type something...">
-        <button id="voice-btn" onclick="startDictation()" class="fas fa-microphone">Clique para falar</button>
+        <button id="voice-btn" onclick="startRecognition()" class="fas fa-microphone">Clique para falar</button>
       </div>
     </div>
 
     <script src="{{ url_for('static', filename='js/Response.js') }}"></script>
     <script src="{{ url_for('static', filename='js/Speech.js') }}"></script>
+
   </body>
 </html>
