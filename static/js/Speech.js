@@ -29,6 +29,7 @@ function startRecognition() {
 
 
 // evento que conecta ao WebSocket do servidor e atualiza a tela com as mensagens recebidas do servidor
+/*
 var socket = io.connect("http://" + document.domain + ":" + location.port);
 
 socket.on("message", function (message) {
@@ -38,3 +39,4 @@ socket.on("message", function (message) {
   messageElem.innerHTML = "<p>" + message + "</p>";
   chatContainer.appendChild(messageElem);
 });
+*/

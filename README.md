@@ -54,6 +54,13 @@ pip install openai
 ### Flask
 pip install Flask
 
+### SocketIO
+pip install socketio
+Microsoft C++ Build Tools -> Netifaces -> pip install netifaces
+
+### NLTK
+pip install nltk
+
 # Project Scope:
 
 ## Creation of Front-end

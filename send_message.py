@@ -1,8 +1,15 @@
 from flask import Flask, request
 import socketio
+from flask_socketio import SocketIO, send
 
 app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = 'PRIVATE'
+socketio = SocketIO(app)
+
+@socketio.on('message')
+def handle_message(message):
+    print('received message: ' + message)
+    send(message, broadcast=True)
 
 # Cria o histórico de mensagens
 messages = []
