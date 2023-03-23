@@ -3,6 +3,7 @@ import socketio
 import speech_recognition as sr
 import openai
 import requests
+from chatbot import chatbot
 
 app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = 'PRIVATE'
