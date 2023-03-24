@@ -1,112 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Cadastro</title>
-    <style>
-        body {
-            background-color: #2B2D42;
-            color: #FFF;
-            font-family: Arial, Helvetica, sans-serif;
-          }
-          
-          h1 {
-            text-align: center;
-          }
-          
-          form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-            width: 50%;
-            margin: 0 auto;
-          }
-          
-          label {
-            font-size: 20px;
-            margin-bottom: 10px;
-          }
-          
-          input {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: none;
-          }
-          
-          input[type=submit] {
-            background-color: #4CAF50;
-            color: #FFF;
-            cursor: pointer;
-            width: 100%;
-            font-size: 20px;
-          }
-          
-          input[type=submit]:hover {
-            background-color: #3e8e41;
-          }
-          
-          .error {
-            color: red;
-            margin-top: 10px;
-          }  form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-          }
-          
-          label {
-            font-size: 20px;
-            margin-bottom: 10px;
-          }
-          
-          input {
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: none;
-          }
-          
-          input[type=submit] {
-            background-color: #4CAF50;
-            color: #FFF;
-            cursor: pointer;
-          }
-          
-          input[type=submit]:hover {
-            background-color: #3e8e41;
-          }
-          
-          .error {
-            color: red;
-            margin-top: 10px;
-          }
-          
-          .fullscreen {
-            height: auto;
-          }
-    </style>
+  <meta charset="UTF-8">
+  <title>VoiceCFV Register</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #000000, #232323);
+
+    }
+    
+    /* HEADER */
+    .header {
+      background: linear-gradient(to bottom, #2B2D42, #1B1D2B);
+      color: #FFF;
+      padding: 20px;
+    }
+    
+    /* CONTENT */
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 50px;
+      box-sizing: border-box;
+    }
+    
+    .left-section {
+      background: linear-gradient(to bottom, #2B2D42, #1B1D2B);
+      color: #FFF;
+      padding: 20px;
+      width: 35%;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    .right-section {
+      background: linear-gradient(to bottom, #2B2D42, #1B1D2B);
+      color: #ffffff;
+      padding: 20px;
+      width: 55%;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    label {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    
+    input {
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      justify-content: left;      
+      align-items: flex-start;
+    }
+    
+    input[type=submit] {
+      background-color: #2B2D42;
+      color: #FFF;
+      cursor: pointer;
+      width: 27%;
+      font-size: 20px;
+      justify-content: left;      
+      align-items: flex-start;
+    }
+    
+    input[type=submit]:hover {
+      background-color: #3e8e41;
+    }
+    
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    
+  </style>
+
 </head>
-    <body class="fullscreen">
-        <h1>Cadastro</h1>
-        {% if error %}
-          <p class="error">{{ error }}</p>
-        {% endif %}
-        <form method="POST">
-          <label for="username">Nome de usuário:</label>
-          <input type="text" id="username" name="username" required>
-      
-          <label for="password">Senha:</label>
-          <input type="password" id="password" name="password" required>
-      
-          <label for="confirm_password">Confirmar senha:</label>
-          <input type="password" id="confirm_password" name="confirm_password" required>
-      
-          <input type="submit" value="Cadastrar">
-        </form>
-      </body>
+<body>
+  <header class="header">
+    <h1>Register on VoiceCFV</h1>
+  </header>
+
+  <div class="content">
+    <section class="left-section">
+      <h2>About VoiceCFV</h2>
+      <p>It's a Voice IA chatbot.</p>
+      <p>It's in development.</p>
+      <p>We're from Brazil! :D</p>
+    </section>
+
+    <section class="right-section">
+      <h2>Register</h2>
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+      <form method="POST">
+        <label for="username">Nome de usuário:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirm_password">Confirmar senha:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required>
+
+        <input type="submit" value="Cadastrar">
+      </form>
+    </section>
+  </div>
+</body>
 </html>

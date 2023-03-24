@@ -8,261 +8,153 @@
  
   <style>
     body {
-      background-color: #111;
-      color: white;
-      font-family: Arial, sans-serif;
       margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #000000, #232323);
     }
     
-    header {
-      height: 80px;
-      background-color: #333;
+    
+    .main-content {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 50px;
-    }
-    
-    h1 {
-      font-size: 28px;
-      font-weight: bold;
-      margin: 0;
-    }
-    
-    .fullscreen {
-      height: calc(100vh - 80px);
-      display: flex;
-      align-items: center;
       justify-content: center;
+      margin: 150px;
     }
     
-    .box {
-      width: 80%;
-      max-width: 600px;
-      height: 250px;
-      background-color: #444;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    }
-    
-    .input {
-      width: 90%;
-      max-width: 500px;
-      height: 50px;
-      padding: 10px;
-      background-color: #eee;
-      border: none;
-      border-radius: 25px;
-      font-size: 18px;
-      outline: none;
-    }
-    
-    .btn-voice {
-      width: 50px;
-      height: 50px;
-      margin-left: 10px;
-      border: none;
-      background-color: #00a8ff;
+    .left-content {
+      width: 40%;
+      padding: 20px;
+      background: linear-gradient(to bottom, #2B2D42, #1B1D2B);
       color: white;
-      font-size: 24px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 6px;
+      margin: 10px;
+    }
+
+    .NewAccount {
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
       cursor: pointer;
     }
     
-    .btn-voice:hover {
-      background-color: #0097e6;
+    .right-content {
+      width: 30%;
+      padding: 20px;
+      background: linear-gradient(to bottom, #2B2D42, #1B1D2B);
+      border-radius: 6px;
+      margin: 10px;
+      color: white;
     }
     
-    .wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-      padding: 50px;
+    .random-messages {
+      margin-top: 20px;
     }
     
-    .left {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      max-width: 400px;
-      margin-right: 50px;
+    .random-messages h3 {
+      color: white;
     }
     
-    .left h2 {
-      font-size: 24px;
+    .random-messages ul {
+      list-style: none;
+      padding: 0;
       margin: 0;
-      margin-bottom: 10px;
     }
     
-    .left p {
-      font-size: 18px;
-      margin: 0;
-      margin-bottom: 20px;
-    }
-    
-    .left a {
-      color: #00a8ff;
-      text-decoration: none;
-      font-size: 18px;
-      transition: color 0.2s ease;
-    }
-    
-    .left a:hover {
-      color: #0097e6;
-    }
-    
-    .right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      max-width: 400px;
-    }
-    
-    .right h2 {
-      font-size: 24px;
-      margin: 0;
-      margin-bottom: 20px;
-    }
-    
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-    
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
+    .random-messages li {
+      margin: 10px 0;
     }
     
     .form-group {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      width: 90%;
-      max-width: 500px;
       margin-bottom: 20px;
     }
-    
     .form-group label {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    
-    .form-group input {
-      width: 100%;
-      height: 50px;
-      padding: 10px;
-      background-color: #eee;
-      border: none;
-      border-radius: 25px;
-      font-size: 18px;
-      outline: none;
-    }
-    
-    .btn {
-      width: 90%;
-      max-width: 500px;
-      height: 40px;
-      background-color: #00a8ff;
+      display: block;
+      margin-bottom: 5px;
       color: white;
-      font-size: 20px;
+      }
+      
+      .form-group input {
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
       border: none;
-      border-radius: 25px;
-      margin-top: 20px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-    
-    .btn:hover {
-      background-color: #0097e6;
-    }
-    
-    @media screen and (max-width: 600px) {
-      .left, .right {
-        max-width: 100%;
-      }
-      
-      .left {
-        margin-right: 0;
-        margin-bottom: 50px;
-      }
-      
-      .wrapper {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .fullscreen {
-        height: auto;
-      }
-    }
-    @media screen and (max-width: 768px) {
-      header {
-      padding: 0 20px;
-      }
-      
-      .wrapper {
-      flex-direction: column;
-      padding: 20px;
-      }
-      
-      .left {
-      margin-right: 0;
+      background-color: #eee;
       margin-bottom: 20px;
+      }
+      
+      .submit-btn {
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      }
+      
+      .submit-btn:hover {
+      background-color: #0b7dda;
+      }
+      
+      .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+      }
+      
+      .wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      }
+      
+      .left {
+      background-color: #202125;
+      color: #fff;
+      padding: 40px;
       text-align: center;
+      flex: 1;
       }
       
       .right {
+      background-color: #292b2f;
+      color: #fff;
+      padding: 40px;
+      text-align: center;
+      flex: 1;
+      }
+      
+      .right h2 {
       margin-bottom: 20px;
-      }
-      
-      .input {
-        width: 100%;
-        }
-      }
-      
-      @media screen and (max-height: 500px) {
-        .fullscreen {
-        height: auto;
-        }
-      }
-      
-      @media screen and (min-width: 1600px) {
-        .box {
-        width: 100%;
-        max-width: 1200px;
-        }
       }
   </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="left">
+ 
+  <div class="main-content">
+    <div class="left-content">
       <h2>Bem-vindo de volta!</h2>
       <p>Faça login para acessar sua conta.</p>
       <br>
       <p>Não tem uma conta?</p>
-      <a href="{{ url_for('register') }}">Criar conta</a>
+      <a href="{{ url_for('register') }}" class="NewAccount">Criar conta</a>
+      <div class="random-messages">
+        <h3>Mensagens aleatórias</h3>
+        <ul>
+          <li>Primeira mensagem</li>
+          <li>Segunda mensagem</li>
+          <li>Terceira mensagem</li>
+        </ul>
+      </div>
     </div>
-    <div class="right">
+    <div class="right-content">
       <h2>Login</h2>
       {% if error %}
-      <p class="error">{{ error }}</p>
+      <p class="error">This is an error message.</p>
       {% endif %}
       <form action="{{ url_for('login') }}" method="POST">
         <div class="form-group">
@@ -273,7 +165,7 @@
           <label for="password">Senha:</label>
           <input type="password" id="password" name="password" required>
         </div>        
-        <button type="submit" class="btn">Entrar</button>
+        <input type="submit" value="Submit" class="submit-btn">
       </form>
     </div>
   </div>
