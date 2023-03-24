@@ -11,10 +11,6 @@ app = Flask(__name__, static_folder='static')
 app.config['SECRET_KEY'] = 'PRIVATE'
 openai.api_key = "PRIVATE"
 
-
-# Cria o histórico de mensagens
-messages = []
-
 # Define as rotas para login, registro e home
 app.route('/', methods=['GET', 'POST'])(login)
 app.route('/register', methods=['GET', 'POST'])(register)
